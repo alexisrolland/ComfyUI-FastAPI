@@ -1,0 +1,20 @@
+services:
+  comfyui-rest-api:
+    command: bash -c "python ComfyUI/main.py & uvicorn src.main:app --host 0.0.0.0 --port 5000 --reload"
+    container_name: comfyui-rest-api
+    image: comfyui-rest-api
+    deploy:
+      resources:
+        reservations:
+          devices:
+            - driver: nvidia
+              count: 1
+              capabilities: [gpu]
+    build:
+      context: .
+      dockerfile: Dockerfile
+    ports:
+      - 5000:5000
+    volumes:
+      - ./models/checkpoints:/usr/app/comfyui-rest-api/ComfyUI/models/checkpoints
+      - ./src:/usr/app/comfyui-rest-api/src
