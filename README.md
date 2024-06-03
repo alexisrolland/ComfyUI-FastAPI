@@ -1,6 +1,6 @@
-# ComfyUI-REST-API
+# ComfyUI-FastAPI
 
-Boilerplate code to create a thin REST API layer on top of ComfyUI.
+Boilerplate code to create a thin REST API layer on top of ComfyUI, using FastAPI.
 
 ## Getting started
 
